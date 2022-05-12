@@ -7,7 +7,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import kotlinx.android.synthetic.main.activity_main.*
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        bottomNavigationView.setupWithNavController(navController)
+        findViewById<BottomNavigationView>(R.id.bottomNavigationView).setupWithNavController(navController)
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
