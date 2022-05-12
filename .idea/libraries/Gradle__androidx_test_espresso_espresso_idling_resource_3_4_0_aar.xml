@@ -1,10 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.test.espresso:espresso-idling-resource:3.4.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c0df2f42a2b9732668ef370a0434e129/espresso-idling-resource-3.4.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8f18e91fabc7b30c9575220fcf7d98a7/transformed/espresso-idling-resource-3.4.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/8f18e91fabc7b30c9575220fcf7d98a7/transformed/espresso-idling-resource-3.4.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/8f18e91fabc7b30c9575220fcf7d98a7/transformed/espresso-idling-resource-3.4.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/9f7cd885f9320f226372d601c16e9269/transformed/espresso-idling-resource-3.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f7cd885f9320f226372d601c16e9269/transformed/espresso-idling-resource-3.4.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/9f7cd885f9320f226372d601c16e9269/transformed/espresso-idling-resource-3.4.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/androidx.test.espresso/espresso-idling-resource/3.4.0/69a300fcf8de2c433672d07a6c436a19dfb9b8f9/espresso-idling-resource-3.4.0-javadoc.jar!/" />
