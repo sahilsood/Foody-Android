@@ -1,4 +1,4 @@
-package com.example.foody
+package com.example.foody.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
