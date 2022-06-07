@@ -4,17 +4,18 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.foody.dto.FoodRecipe
 import com.example.foody.network.Repository
 import com.example.foody.util.NetworkResult
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class MainViewModel @ViewModelInject constructor(
+@HiltViewModel
+class MainViewModel constructor(
     private val repository: Repository,
     application: MyApplication
 ) : AndroidViewModel(application) {
