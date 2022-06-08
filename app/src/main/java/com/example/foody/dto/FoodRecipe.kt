@@ -14,7 +14,11 @@ data class FoodRecipe(
         val image: String,
         val imageType: String,
         val nutrition: Nutrition,
-        val title: String
+        val title: String,
+        val summary: String,
+        val aggregateLikes: Int,
+        val readyInMinutes: Int,
+        val vegan: Boolean
     ) {
         data class Nutrition(
             val nutrients: List<Nutrient>
