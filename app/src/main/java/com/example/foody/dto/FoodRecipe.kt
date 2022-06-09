@@ -1,8 +1,6 @@
 package com.example.foody.dto
 
 
-import com.google.gson.annotations.SerializedName
-
 data class FoodRecipe(
     val number: Int,
     val offset: Int,

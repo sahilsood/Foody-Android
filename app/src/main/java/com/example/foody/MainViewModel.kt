@@ -13,11 +13,14 @@ import com.example.foody.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
+import javax.inject.Inject
+
+internal const val API_KEY_HERE = "API KEY HERE"
 
 @HiltViewModel
-class MainViewModel constructor(
+class MainViewModel @Inject constructor(
     private val repository: Repository,
-    application: MyApplication
+    application: Application
 ) : AndroidViewModel(application) {
 
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
@@ -64,7 +67,7 @@ class MainViewModel constructor(
     private fun hasInternetConnection(): Boolean {
         val connectivityManager =
             getApplication<Application>().getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetwork = connectivityManager.activeNetwork ?: false
+        val activeNetwork = connectivityManager.activeNetwork ?: return false
         val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
         return when {
             capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true

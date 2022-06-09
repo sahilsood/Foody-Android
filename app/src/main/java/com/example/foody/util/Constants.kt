@@ -1,2 +1,5 @@
-package com.example.foody.util 
+package com.example.foody.util
 
+class Constants {
+
+}
