@@ -15,7 +15,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 import javax.inject.Inject
 
-internal const val API_KEY_HERE = "API KEY HERE"
+internal const val API_KEY = "d5357957af534fde89d9f985c7ae752a"
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
