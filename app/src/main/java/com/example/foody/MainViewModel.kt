@@ -56,7 +56,7 @@ class MainViewModel @Inject constructor(
             }
             response.isSuccessful -> {
                 val foodRecipes = response.body()
-                return NetworkResult.Success(foodRecipes!!)
+                return foodRecipes?.let { NetworkResult.Success(foodRecipes) }
             }
             else -> {
                 return NetworkResult.Error(response.message())
