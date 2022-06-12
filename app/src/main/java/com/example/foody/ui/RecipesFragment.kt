@@ -8,7 +8,6 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foody.API_KEY
 import com.example.foody.MainViewModel
 import com.example.foody.R
 import com.example.foody.adapter.RecipesAdapter
