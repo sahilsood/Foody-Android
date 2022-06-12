@@ -9,6 +9,10 @@ android {
     compileSdkVersion 32
     buildToolsVersion "30.0.3"
 
+
+    def localProperties = new Properties()
+    localProperties.load(new FileInputStream(rootProject.file("local.properties")))
+
     defaultConfig {
         applicationId "com.example.foody"
         minSdkVersion 23
@@ -23,6 +27,9 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            resValue("string", "api_key", localProperties['apiKey'])
         }
     }
 
@@ -48,7 +55,7 @@ java {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.0"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:1.6.21"
     implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.4.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'

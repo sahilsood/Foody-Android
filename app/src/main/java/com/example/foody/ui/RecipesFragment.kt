@@ -10,6 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foody.API_KEY
 import com.example.foody.MainViewModel
+import com.example.foody.R
 import com.example.foody.adapter.RecipesAdapter
 import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.util.NetworkResult
@@ -77,7 +78,7 @@ class RecipesFragment : Fragment() {
     private fun applyQueries(): HashMap<String, String> {
         val queries: HashMap<String, String> = HashMap()
         queries["number"] = "50"
-        queries["apiKey"] = API_KEY
+        queries["apiKey"] = resources.getString(R.string.api_key)
         queries["type"] = "snack"
         queries["diet"] = "vegan"
         queries["addRecipeInformation"] = "true"
