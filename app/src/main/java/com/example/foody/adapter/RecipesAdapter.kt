@@ -13,10 +13,10 @@ class RecipesAdapter : RecyclerView.Adapter<RecipesAdapter.MyViewHolder>() {
 
     class MyViewHolder(private val binding: RecipesRowItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
-            fun bind(result: FoodRecipe.Result) {
-                binding.result = result
-                binding.executePendingBindings()
-            }
+        fun bind(result: FoodRecipe.Result) {
+            binding.result = result
+            binding.executePendingBindings()
+        }
 
         companion object {
             fun from(parent: ViewGroup): MyViewHolder {

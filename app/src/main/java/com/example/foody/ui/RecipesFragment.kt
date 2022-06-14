@@ -8,11 +8,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foody.MainViewModel
-import com.example.foody.R
 import com.example.foody.adapter.RecipesAdapter
 import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.util.NetworkResult
+import com.example.foody.viewmodel.MainViewModel
+import com.example.foody.viewmodel.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,11 +20,18 @@ class RecipesFragment : Fragment() {
     private val recipesAdapter by lazy { RecipesAdapter() }
     private lateinit var binding: FragmentRecipesBinding
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var recipesViewModel: RecipesViewModel
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
+        recipesViewModel = ViewModelProvider(requireActivity())[RecipesViewModel::class.java]
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        mainViewModel = ViewModelProvider(requireActivity())[MainViewModel::class.java]
         // Inflate the layout for this fragment
         binding = FragmentRecipesBinding.inflate(inflater, container, false)
         return binding.root
@@ -51,7 +58,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun requestApiData() {
-        mainViewModel.getRecipes(queries = applyQueries())
+        mainViewModel.getRecipes(queries = recipesViewModel.applyQueries(resources = resources))
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
                 is NetworkResult.Success -> {
@@ -72,17 +79,6 @@ class RecipesFragment : Fragment() {
             }
 
         }
-    }
-
-    private fun applyQueries(): HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-        queries["number"] = "50"
-        queries["apiKey"] = resources.getString(R.string.api_key)
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["addRecipeInformation"] = "true"
-        queries["fillIngredients"] = "true"
-        return queries
     }
 
 }

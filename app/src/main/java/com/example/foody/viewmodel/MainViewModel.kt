@@ -1,4 +1,4 @@
-package com.example.foody
+package com.example.foody.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -24,7 +24,7 @@ class MainViewModel @Inject constructor(
     var recipesResponse: MutableLiveData<NetworkResult<FoodRecipe>> = MutableLiveData()
 
     fun getRecipes(queries: Map<String, String>) = viewModelScope.launch {
-        getRecipesSafeCall(queries)
+        getRecipesSafeCall(queries = queries)
     }
 
     private suspend fun getRecipesSafeCall(queries: Map<String, String>) {
@@ -47,7 +47,7 @@ class MainViewModel @Inject constructor(
                 return NetworkResult.Error("Timeout")
             }
             response.code() == 402 -> {
-                return NetworkResult.Error("API key limites")
+                return NetworkResult.Error("API key limits")
             }
             response.body()?.results.isNullOrEmpty() -> {
                 return NetworkResult.Error("Recipe results not found")
