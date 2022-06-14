@@ -36,7 +36,8 @@
             android:src="@drawable/ic_baseline_restaurant_24"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:tint="@color/white" />
+            app:tint="@color/white"
+            tools:ignore="ContentDescription" />
 
         <ImageButton
             android:id="@+id/sadImage"
@@ -49,7 +50,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/recyclerView" />
+            app:layout_constraintTop_toTopOf="@+id/recyclerView"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/noConnectionText"
