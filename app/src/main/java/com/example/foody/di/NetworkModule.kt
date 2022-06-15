@@ -1,6 +1,7 @@
 package com.example.foody.di
 
-import com.example.foody.network.FoodRecipeApi
+import com.example.foody.data.network.FoodRecipeApi
+import com.example.foody.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -37,7 +38,7 @@ object NetworkModule {
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://api.spoonacular.com/")
+            .baseUrl(BASE_URL)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()

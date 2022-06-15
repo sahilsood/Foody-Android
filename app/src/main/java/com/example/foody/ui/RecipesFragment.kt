@@ -1,19 +1,23 @@
 package com.example.foody.ui
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.foody.adapter.RecipesAdapter
 import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.util.NetworkResult
+import com.example.foody.util.observeOnce
 import com.example.foody.viewmodel.MainViewModel
 import com.example.foody.viewmodel.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
@@ -40,15 +44,7 @@ class RecipesFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpRecyclerView()
-        requestApiData()
-    }
-
-    private fun showShimmerEffect() {
-        binding.recyclerView.showShimmer()
-    }
-
-    private fun hideShimmerEffect() {
-        binding.recyclerView.hideShimmer()
+        readDatabase()
     }
 
     private fun setUpRecyclerView() {
@@ -57,7 +53,22 @@ class RecipesFragment : Fragment() {
         showShimmerEffect()
     }
 
+    private fun readDatabase() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipes.observeOnce(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    Log.d("RecipesFragment", "readDatabase called!")
+                    database.firstOrNull()?.foodRecipe?.let { recipesAdapter.setData(foodRecipe = it) }
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
+                }
+            }
+        }
+    }
+
     private fun requestApiData() {
+        Log.d("RecipesFragment", "requestApiData called!")
         mainViewModel.getRecipes(queries = recipesViewModel.applyQueries(resources = resources))
         mainViewModel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -67,6 +78,7 @@ class RecipesFragment : Fragment() {
                 }
                 is NetworkResult.Error -> {
                     hideShimmerEffect()
+                    requestDataFromCache()
                     Toast.makeText(
                         requireContext(),
                         response.message,
@@ -79,6 +91,24 @@ class RecipesFragment : Fragment() {
             }
 
         }
+    }
+
+    private fun requestDataFromCache() {
+        lifecycleScope.launch {
+            mainViewModel.readRecipes.observe(viewLifecycleOwner) { database ->
+                if (database.isNotEmpty()) {
+                    database.firstOrNull()?.foodRecipe?.let { recipesAdapter.setData(foodRecipe = it) }
+                }
+            }
+        }
+    }
+
+    private fun showShimmerEffect() {
+        binding.recyclerView.showShimmer()
+    }
+
+    private fun hideShimmerEffect() {
+        binding.recyclerView.hideShimmer()
     }
 
 }

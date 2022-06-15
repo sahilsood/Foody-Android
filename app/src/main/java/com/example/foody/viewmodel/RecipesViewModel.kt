@@ -4,13 +4,12 @@ import android.app.Application
 import android.content.res.Resources
 import androidx.lifecycle.AndroidViewModel
 import com.example.foody.R
-
-private const val QUERY_NUMBER = "number"
-private const val QUERY_API_KEY = "apiKey"
-private const val QUERY_TYPE = "type"
-private const val QUERY_DIET = "diet"
-private const val QUERY_ADD_RECIPE_INFORMATION = "addRecipeInformation"
-private const val QUERY_FILL_INGREDIENTS = "fillIngredients"
+import com.example.foody.util.Constants.Companion.QUERY_ADD_RECIPE_INFORMATION
+import com.example.foody.util.Constants.Companion.QUERY_API_KEY
+import com.example.foody.util.Constants.Companion.QUERY_DIET
+import com.example.foody.util.Constants.Companion.QUERY_FILL_INGREDIENTS
+import com.example.foody.util.Constants.Companion.QUERY_NUMBER
+import com.example.foody.util.Constants.Companion.QUERY_TYPE
 
 class RecipesViewModel(application: Application) : AndroidViewModel(application) {
 

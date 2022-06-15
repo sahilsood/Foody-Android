@@ -1,4 +1,4 @@
-package com.example.foody.network
+package com.example.foody.data.network
 
 import com.example.foody.dto.FoodRecipe
 import retrofit2.Response
