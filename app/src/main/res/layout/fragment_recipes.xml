@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/lightGray"
-        tools:context=".ui.RecipesFragment">
+        tools:context=".ui.fragments.recipes.RecipesFragment">
 
         <com.todkars.shimmer.ShimmerRecyclerView
             android:id="@+id/recyclerView"
@@ -48,6 +48,8 @@
 
         <ImageButton
             android:id="@+id/sadImage"
+            readApiResponse="@{mainViewModel.recipesResponse}"
+            readDatabase="@{mainViewModel.readRecipes}"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="60dp"
@@ -62,10 +64,12 @@
 
         <TextView
             android:id="@+id/noConnectionText"
+            readApiResponse2="@{mainViewModel.recipesResponse}"
+            readDatabase2="@{mainViewModel.readRecipes}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="1dp"
-            android:text="No Internet Connection"
+            android:text="@string/no_internet_connection"
             android:textSize="18sp"
             android:textStyle="bold"
             android:visibility="gone"
