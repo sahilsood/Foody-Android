@@ -1,5 +1,6 @@
 package com.example.foody.data
 
+import android.util.Log
 import com.example.foody.data.network.FoodRecipeApi
 import com.example.foody.dto.FoodRecipe
 import retrofit2.Response
@@ -10,7 +11,9 @@ class RemoteDataSource @Inject constructor(
 ) {
 
     suspend fun getRecipes(queries: Map<String, String>): Response<FoodRecipe> {
-        return foodRecipesApi.getRecipes(queries)
+        val result = foodRecipesApi.getRecipes(queries)
+        Log.i("okhttp", result.toString())
+        return result
     }
 
 }
